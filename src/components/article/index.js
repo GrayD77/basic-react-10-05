@@ -3,7 +3,7 @@ import CSSTransition from 'react-addons-css-transition-group'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CommentList from '../comment-list'
-import { deleteArticle } from '../../ac'
+import { deleteArticle, addComment } from '../../ac'
 import './article.css'
 
 class Article extends PureComponent {
@@ -59,17 +59,17 @@ class Article extends PureComponent {
     return (
       <section className="test__article_body">
         {article.text}
-        <CommentList comments={article.comments} />
+        <CommentList addComment={this.addComment} comments={article.comments} />
       </section>
     )
   }
 
   toggleOpen = () => this.props.toggleOpen(this.props.article.id)
 
-  handleDelete = () => {
-    const { deleteArticle, article } = this.props
-    deleteArticle(article.id)
+  addComment = (comment) => {
+    const { addComment } = this.props
+    addComment(comment)
   }
 }
 
-export default connect(null, { deleteArticle })(Article)
+export default connect(null, { deleteArticle, addComment })(Article)
