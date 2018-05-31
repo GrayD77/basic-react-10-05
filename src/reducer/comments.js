@@ -14,10 +14,9 @@ export default (commentsState = defaultComments, action) => {
   switch (type) {
     case ADD_COMMENT:
       const { comment } = payload
-      comment.id = Date.now()
       commentsState[comment.id] = comment
-      console.log(comment)
       return commentsState
+
     default:
       return commentsState
   }

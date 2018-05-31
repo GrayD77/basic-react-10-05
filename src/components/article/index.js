@@ -66,8 +66,16 @@ class Article extends PureComponent {
 
   toggleOpen = () => this.props.toggleOpen(this.props.article.id)
 
+  handleDelete = () => {
+    const { deleteArticle, article } = this.props
+    deleteArticle(article.id)
+  }
+
   addComment = (comment) => {
     const { addComment } = this.props
+    console.log(comment)
+    comment.id = Date.now()
+    comment.articleId = this.props.article.id
     addComment(comment)
   }
 }

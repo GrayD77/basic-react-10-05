@@ -13,9 +13,10 @@ export const filtratedArticlesSelector = createSelector(
       selected,
       dateRange: { from, to }
     } = filters
-    console.log('---', 'calculating filters')
 
-    return articles.filter((article) => {
+    const articlesArray = Object.values(articles)
+    console.log(articlesArray)
+    return articlesArray.filter((article) => {
       const published = Date.parse(article.date)
       return (
         (!selected.length ||

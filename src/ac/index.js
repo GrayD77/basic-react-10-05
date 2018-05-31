@@ -13,6 +13,7 @@ export function increment() {
 }
 
 export function deleteArticle(id) {
+  console.log(1111)
   return {
     type: DELETE_ARTICLE,
     payload: { id }
